@@ -16,9 +16,9 @@
       animation: gradientBG 15s ease infinite;
     }
     @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Header with neon glowing, bubbly font – more legible */
@@ -142,21 +142,20 @@
       margin-top: 20px;
     }
 
-    /* Slot Machine Modal */
+    /* Slot Machine Modal (smaller and less in the way) */
     #slotMachineModal {
       position: fixed;
       top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
+      right: 10px;
+      width: 300px;
       background: rgba(0,0,0,0.95);
-      border: 3px solid #00ff00;
+      border: 2px solid #00ff00;
       border-radius: 10px;
       z-index: 1000;
       color: #fff;
-      box-shadow: 0 0 20px #00ff00;
+      box-shadow: 0 0 15px #00ff00;
       padding: 10px;
+      display: none;
     }
     #slotMachineModal.minimized {
       height: 40px;
@@ -239,11 +238,34 @@
       background-color: #ffcc00;
     }
 
+    /* Open Slot Machine Button (fixed in bottom-right) */
+    #openSlotButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00ff00;
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2em;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 1200;
+    }
+    #openSlotButton:hover {
+      background-color: #00cc00;
+      transform: scale(1.1);
+    }
+
     /* Responsive optimization for iPhone */
     @media only screen and (max-width: 600px) {
       header h1 { font-size: 2.5em; }
       .container { padding: 15px; }
       .reel { font-size: 1.5em; width: 40px; height: 40px; line-height: 40px; }
+      #slotMachineModal { width: 250px; }
+      #openSlotButton { width: 50px; height: 50px; font-size: 1.5em; }
     }
   </style>
 </head>
@@ -340,7 +362,7 @@
     <p>Joannes Baskets © 2024 | Curated excellence in every basket.</p>
   </footer>
 
-  <!-- Slot Machine Modal -->
+  <!-- Slot Machine Modal (initially hidden) -->
   <div id="slotMachineModal">
     <div id="slotMachineHeader">
       <span id="slotMachineTitle">Slot Machine</span>
@@ -363,9 +385,11 @@
   <!-- Win Popup Modal -->
   <div id="winPopup">
     <h2></h2>
-    <p></p>
     <button id="closeWinPopup">Close</button>
   </div>
+
+  <!-- Open Slot Machine Button (fixed in bottom-right) -->
+  <button id="openSlotButton">🎰</button>
 
   <script>
     /* --- Product Button Functionality --- */
@@ -544,6 +568,18 @@
     closeWinPopup.addEventListener('click', function() {
       winPopup.style.display = 'none';
     });
+
+    /* --- Open Slot Machine Button Functionality --- */
+    const openSlotButton = document.getElementById('openSlotButton');
+    openSlotButton.addEventListener('click', function() {
+      // Toggle display of the slot machine modal
+      if (slotMachineModal.style.display === 'none' || slotMachineModal.style.display === '') {
+        slotMachineModal.style.display = 'block';
+      } else {
+        slotMachineModal.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
+`
