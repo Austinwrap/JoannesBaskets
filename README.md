@@ -327,6 +327,9 @@
 
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email" required />
+
+        <label for="venmo">Venmo Username</label>
+        <input type="text" id="venmo" name="venmo" required />
       </div>
 
       <button type="submit">Submit Order Request</button>
@@ -427,6 +430,7 @@
       const name = document.getElementById('name').value;
       const phone = document.getElementById('phone').value;
       const email = document.getElementById('email').value;
+      const venmo = document.getElementById('venmo').value;
       const theme = document.getElementById('theme').value;
       const tierText = document.getElementById('tier').options[document.getElementById('tier').selectedIndex].text;
       let selectedProducts = [];
@@ -443,7 +447,8 @@
         `=== Customer Details ===\n` +
         `Name: ${name}\n` +
         `Phone: ${phone}\n` +
-        `Email: ${email}\n\n` +
+        `Email: ${email}\n` +
+        `Venmo Username: ${venmo}\n\n` +
         `=== Basket Details ===\n` +
         `Theme: ${theme}\n` +
         `Tier: ${tierText}\n` +
@@ -534,7 +539,6 @@
     const closeWinPopup = document.getElementById('closeWinPopup');
     function showWinPopup(message) {
       winPopup.querySelector("h2").textContent = message;
-      winPopup.querySelector("p").textContent = ""; // No extra text needed
       winPopup.style.display = 'block';
     }
     closeWinPopup.addEventListener('click', function() {
