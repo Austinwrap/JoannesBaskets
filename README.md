@@ -208,8 +208,8 @@
       background-color: #00cc00;
     }
 
-    /* Jackpot Popup Modal */
-    #jackpotPopup {
+    /* Win Popup Modal */
+    #winPopup {
       position: fixed;
       top: 30%;
       left: 50%;
@@ -226,7 +226,7 @@
       display: none;
       box-shadow: 0 0 20px #ffdd00;
     }
-    #jackpotPopup button {
+    #winPopup button {
       background-color: #ffdd00;
       color: #000;
       margin-top: 15px;
@@ -235,7 +235,7 @@
       padding: 10px 20px;
       font-weight: bold;
     }
-    #jackpotPopup button:hover {
+    #winPopup button:hover {
       background-color: #ffcc00;
     }
 
@@ -357,11 +357,11 @@
     </div>
   </div>
 
-  <!-- Jackpot Popup Modal -->
-  <div id="jackpotPopup">
-    <h2>JACKPOT!</h2>
-    <p>$5 off your purchase!</p>
-    <button id="closeJackpot">Close</button>
+  <!-- Win Popup Modal -->
+  <div id="winPopup">
+    <h2></h2>
+    <p></p>
+    <button id="closeWinPopup">Close</button>
   </div>
 
   <script>
@@ -456,14 +456,12 @@
 
     /* --- Slot Machine Functionality --- */
     const slotEmojis = ["🧺", "🕯️", "🍎", "🥜", "🧀", "🍫", "🍷", "☕", "🍵", "💰", "🎰"];
-    const jackpotSymbols = ["💰", "🎰"];
     const reel1 = document.getElementById('reel1');
     const reel2 = document.getElementById('reel2');
     const reel3 = document.getElementById('reel3');
     const spinButton = document.getElementById('spinButton');
     const balanceDisplay = document.getElementById('slotMachineBalance');
     let balance = 1000000; // resets on refresh
-    let jackpotWon = false; // only one win per session
     const spinCost = 50; // cost per spin
 
     function updateBalanceDisplay() {
@@ -476,18 +474,19 @@
         alert("Insufficient funds for a spin!");
         return;
       }
+      // Deduct spin cost and update display
       balance -= spinCost;
       updateBalanceDisplay();
       spinButton.disabled = true;
-      const spinTime = 1000; // spin for 1 second
+      const spinTime = 1500; // spin for 1.5 seconds for realism
       const interval = setInterval(() => {
         reel1.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
         reel2.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
         reel3.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-      }, 100);
+      }, 75);
       setTimeout(() => {
         clearInterval(interval);
-        // Final values
+        // Determine final values
         const final1 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
         const final2 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
         const final3 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
@@ -495,10 +494,18 @@
         reel2.textContent = final2;
         reel3.textContent = final3;
         spinButton.disabled = false;
-        // Check for jackpot win: all reels match and are one of the jackpot symbols
-        if (!jackpotWon && final1 === final2 && final2 === final3 && jackpotSymbols.includes(final1)) {
-          jackpotWon = true;
-          showJackpotPopup();
+        // Determine win conditions: if at least two reels match, win bonus.
+        let bonus = 0;
+        if (final1 === final2 && final2 === final3) {
+          bonus = 1000; // jackpot for triple match
+        } else if (final1 === final2 || final2 === final3 || final1 === final3) {
+          bonus = 200; // win for double match
+        }
+        if (bonus > 0) {
+          // Add bonus to account balance and show win popup
+          balance += bonus;
+          updateBalanceDisplay();
+          showWinPopup(`Congratulations! You won $${bonus.toLocaleString()}!`);
         }
       }, spinTime);
     });
@@ -522,14 +529,16 @@
       }
     });
 
-    /* --- Jackpot Popup Functionality --- */
-    const jackpotPopup = document.getElementById('jackpotPopup');
-    const closeJackpot = document.getElementById('closeJackpot');
-    function showJackpotPopup() {
-      jackpotPopup.style.display = 'block';
+    /* --- Win Popup Functionality --- */
+    const winPopup = document.getElementById('winPopup');
+    const closeWinPopup = document.getElementById('closeWinPopup');
+    function showWinPopup(message) {
+      winPopup.querySelector("h2").textContent = message;
+      winPopup.querySelector("p").textContent = ""; // No extra text needed
+      winPopup.style.display = 'block';
     }
-    closeJackpot.addEventListener('click', function() {
-      jackpotPopup.style.display = 'none';
+    closeWinPopup.addEventListener('click', function() {
+      winPopup.style.display = 'none';
     });
   </script>
 </body>
