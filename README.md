@@ -1,585 +1,435 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joannes Baskets</title>
-  <!-- Google Font for bubbly neon header -->
-  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <title>Joanne's Baskets - Groovy Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Neon colorful gradient background */
+    /* Cheerful, Balanced Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, #ff007f, #00ffee, #ffee00, #ff007f);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      background: #fff8e1; /* Warm, light yellow */
+      color: #333;
     }
 
-    /* Header with neon glowing, bubbly font – more legible */
+    /* Header with Flair */
     header {
-      background-color: #000;
-      padding: 20px;
+      background: #26a69a; /* Bright teal */
+      color: #fff;
+      padding: 25px;
       text-align: center;
-      border-bottom: 5px solid #00ccff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 4px solid #ff7043; /* Coral accent */
     }
     header h1 {
       margin: 0;
-      font-family: 'Bubblegum Sans', cursive;
-      font-size: 3em;
-      color: #00ccff;
-      text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff;
+      font-size: 2.8em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      animation: bounceIn 1s ease;
     }
     header p {
       font-size: 1.2em;
-      margin-top: 10px;
-      color: #fff;
+      margin: 5px 0 0;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
     }
 
-    /* Container with smooth fade-in */
+    /* Main Content */
     .container {
+      max-width: 800px;
+      margin: 20px auto;
       background: #fff;
-      border-radius: 10px;
-      max-width: 95%;
-      margin: 30px auto;
-      padding: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      border: 3px solid #00ccff;
-      animation: fadeIn 1s ease-out;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #26a69a;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    h2 {
+      color: #26a69a;
+      margin: 20px 0 10px;
+      font-size: 1.5em;
+      border-bottom: 2px solid #ffca28;
+      padding-bottom: 5px;
     }
 
-    /* Form styling */
-    .form-section { margin-bottom: 25px; }
-    label { font-weight: bold; margin-top: 10px; display: block; color: #333; }
-    select, input, textarea, button {
+    /* Form Styling */
+    .form-section {
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 10px 0 5px;
+      color: #26a69a;
+    }
+    select, input, textarea {
       width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      border: 2px solid #00ccff;
+      padding: 12px;
+      border: 2px solid #ffca28;
       border-radius: 8px;
-      background-color: #f9faff;
-      margin-top: 8px;
+      font-size: 1em;
+      background: #fffde7;
+      transition: border-color 0.3s;
     }
-    textarea { height: 100px; resize: vertical; }
+    select:focus, input:focus, textarea:focus {
+      border-color: #ff7043;
+      outline: none;
+    }
+    textarea {
+      height: 90px;
+      resize: vertical;
+    }
 
-    /* Product Buttons Container (cute & extra buttons) */
+    /* Product Grid */
     #products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
     }
     .product-btn {
-      padding: 10px;
-      background-color: #fff;
-      border: 2px solid #00ccff;
-      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      border: 2px solid #26a69a;
+      border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-      font-size: 0.9em;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: bold;
       color: #333;
     }
     .product-btn:hover {
-      transform: scale(1.1) rotate(3deg);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background: #ff7043;
+      color: #fff;
+      transform: scale(1.05);
     }
     .product-btn.selected {
-      background-color: #00ccff;
+      background: #26a69a;
       color: #fff;
-      transform: scale(1.1) rotate(-3deg);
+      border-color: #ffca28;
     }
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .pop { animation: pop 0.3s ease; }
 
-    /* "Your Basket" List Styling */
-    #selectedProductsContainer {
-      margin-top: 15px;
-      background: #f0faff;
-      padding: 10px;
-      border: 2px dashed #00ccff;
+    /* Preview */
+    #basketPreview {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fffde7;
+      border: 2px dashed #ff7043;
       border-radius: 8px;
+      text-align: center;
     }
-    #selectedProductsContainer h3 { margin-top: 0; color: #00ccff; text-align: center; }
-    #selectedProducts { list-style-type: none; padding-left: 0; text-align: center; color: #333; }
 
-    /* Generic Button Styling (updated colors) */
+    /* Buttons */
     button {
-      background-color: #00ccff;
+      background: #26a69a;
       color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
       font-weight: bold;
       cursor: pointer;
-      border: none;
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s, background-color 0.3s;
-      margin-top: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
     button:hover {
-      background-color: #0099cc;
-      transform: scale(1.1);
+      background: #ff7043;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    #quoteDisplay { margin-top: 10px; font-weight: bold; color: #0099cc; text-align: center; }
 
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #000;
+      background: #26a69a;
       color: #fff;
+      text-align: center;
+      padding: 20px;
       margin-top: 20px;
+      border-top: 4px solid #ffca28;
     }
 
-    /* Slot Machine Modal (smaller and less in the way) */
+    /* Slot Machine Modal */
     #slotMachineModal {
       position: fixed;
-      top: 10%;
-      right: 10px;
-      width: 300px;
-      background: rgba(0,0,0,0.95);
-      border: 2px solid #00ff00;
-      border-radius: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      background: #fff;
+      border: 3px solid #ff7043;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       z-index: 1000;
-      color: #fff;
-      box-shadow: 0 0 15px #00ff00;
-      padding: 10px;
       display: none;
+      animation: popIn 0.3s ease;
     }
-    #slotMachineModal.minimized {
-      height: 40px;
-      overflow: hidden;
-      cursor: pointer;
+    @keyframes popIn {
+      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     }
     #slotMachineHeader {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    #slotMachineHeader button {
-      background: transparent;
-      border: none;
-      color: #00ff00;
-      font-size: 1.2em;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-    #slotMachineContent {
-      text-align: center;
-      margin-top: 10px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: #26a69a;
     }
     #reels {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 20px;
+      margin-bottom: 15px;
     }
     .reel {
-      font-size: 2em;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      background: #222;
-      border: 2px solid #00ff00;
-      border-radius: 5px;
-    }
-    #spinButton {
-      background-color: #00ff00;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    #spinButton:hover {
-      background-color: #00cc00;
-    }
-
-    /* Win Popup Modal */
-    #winPopup {
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -30%);
-      width: 80%;
-      max-width: 300px;
-      background: rgba(0, 0, 0, 0.95);
-      border: 3px solid #ffdd00;
-      border-radius: 10px;
-      z-index: 1100;
-      color: #ffdd00;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
       text-align: center;
-      padding: 20px;
-      display: none;
-      box-shadow: 0 0 20px #ffdd00;
-    }
-    #winPopup button {
-      background-color: #ffdd00;
-      color: #000;
-      margin-top: 15px;
-      border: none;
+      font-size: 2.5em;
+      border: 2px solid #ffca28;
       border-radius: 10px;
-      padding: 10px 20px;
-      font-weight: bold;
+      background: #fffde7;
+      transition: transform 0.2s;
     }
-    #winPopup button:hover {
-      background-color: #ffcc00;
+    .reel.spinning {
+      transform: rotateX(360deg);
     }
-
-    /* Open Slot Machine Button (fixed in bottom-right) */
-    #openSlotButton {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #00ff00;
-      color: #000;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 2em;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      cursor: pointer;
-      z-index: 1200;
-    }
-    #openSlotButton:hover {
-      background-color: #00cc00;
-      transform: scale(1.1);
+    #slotMachineModal button {
+      width: 100%;
     }
 
-    /* Responsive optimization for iPhone */
-    @media only screen and (max-width: 600px) {
-      header h1 { font-size: 2.5em; }
-      .container { padding: 15px; }
-      .reel { font-size: 1.5em; width: 40px; height: 40px; line-height: 40px; }
-      #slotMachineModal { width: 250px; }
-      #openSlotButton { width: 50px; height: 50px; font-size: 1.5em; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      #products {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+      #slotMachineModal {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Joannes Baskets</h1>
-    <p>Your destination for extraordinary baskets!</p>
+    <h1>Joanne's Baskets</h1>
+    <p>Build a Basket with a Splash of Fun!</p>
   </header>
 
   <div class="container">
     <form id="basketForm">
+      <!-- Basket Details -->
       <div class="form-section">
         <h2>Basket Details</h2>
-        <label for="theme">Select a Theme</label>
+        <label for="theme">Theme <span style="color: #ff7043">*</span></label>
         <select id="theme" name="theme" required>
+          <option value="" disabled selected>Select a theme</option>
           <option value="Christmas">Christmas</option>
-          <option value="Halloween">Halloween</option>
           <option value="Birthday">Birthday</option>
           <option value="Wedding">Wedding</option>
-          <option value="Easter">Easter</option>
-          <option value="Thanksgiving">Thanksgiving</option>
-          <option value="Hanukkah">Hanukkah</option>
-          <option value="Valentine's Day">Valentine's Day</option>
-          <option value="Mother's Day">Mother's Day</option>
-          <option value="Father's Day">Father's Day</option>
+          <option value="Custom">Custom</option>
         </select>
 
-        <label for="tier">Select Basket Tier</label>
+        <label for="tier">Basket Size <span style="color: #ff7043">*</span></label>
         <select id="tier" name="tier" required>
-          <option value="standard">Tier 1: Standard</option>
-          <option value="deluxe">Tier 2: Deluxe</option>
-          <option value="premium">Tier 3: Premium</option>
+          <option value="" disabled selected>Choose a size</option>
+          <option value="standard">Standard</option>
+          <option value="deluxe">Deluxe</option>
+          <option value="premium">Premium</option>
         </select>
 
-        <label for="products">Choose Your Products</label>
-        <!-- Product Buttons Container with extra cute buttons -->
+        <label>Products</label>
         <div id="products">
-          <button type="button" class="product-btn" data-product="Candles">🕯️ Elegant Candles</button>
-          <button type="button" class="product-btn" data-product="Fresh Fruit">🍎 Seasonal Fresh Fruit</button>
-          <button type="button" class="product-btn" data-product="Mixed Nuts">🥜 Premium Mixed Nuts</button>
-          <button type="button" class="product-btn" data-product="Gourmet Crackers">🥨 Artisan Crackers</button>
-          <button type="button" class="product-btn" data-product="Artisan Chips">🍟 Handcrafted Chips</button>
-          <button type="button" class="product-btn" data-product="Premium Cheeses">🧀 Fine Cheeses</button>
-          <button type="button" class="product-btn" data-product="Wine">🍷 Select Wine</button>
-          <button type="button" class="product-btn" data-product="Assorted Chocolates">🍫 Decadent Chocolates</button>
-          <button type="button" class="product-btn" data-product="Gourmet Coffee">☕ Exquisite Coffee</button>
-          <button type="button" class="product-btn" data-product="Specialty Teas">🍵 Exotic Teas</button>
-          <!-- Extra Cute Buttons -->
-          <button type="button" class="product-btn" data-product="Fresh Flowers">🌸 Fresh Flowers</button>
-          <button type="button" class="product-btn" data-product="Gourmet Cookies">🍪 Gourmet Cookies</button>
-          <button type="button" class="product-btn" data-product="Sweet Cupcakes">🧁 Sweet Cupcakes</button>
-          <button type="button" class="product-btn" data-product="Organic Honey">🍯 Organic Honey</button>
-          <button type="button" class="product-btn" data-product="Artisan Bread">🥖 Artisan Bread</button>
+          <button type="button" class="product-btn" data-product="Candles">🕯️ Candles</button>
+          <button type="button" class="product-btn" data-product="Fruit">🍎 Fruit</button>
+          <button type="button" class="product-btn" data-product="Nuts">🥜 Nuts</button>
+          <button type="button" class="product-btn" data-product="Chocolates">🍫 Chocolates</button>
+          <button type="button" class="product-btn" data-product="Wine">🍷 Wine</button>
+          <button type="button" class="product-btn" data-product="Flowers">🌸 Flowers</button>
         </div>
 
-        <!-- Live "Your Basket" List -->
-        <div id="selectedProductsContainer">
+        <div id="basketPreview">
           <h3>Your Basket</h3>
-          <ul id="selectedProducts"></ul>
+          <p id="previewText">Start adding some goodies!</p>
         </div>
 
-        <label for="message">Personalized Message</label>
-        <textarea id="message" name="message" placeholder="Enter your message here"></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Add a special touch (optional)"></textarea>
       </div>
 
+      <!-- Delivery/Pickup -->
       <div class="form-section">
-        <h2>Quote Generator</h2>
-        <p class="info-note">Click below to view your estimated quote based on your selections.</p>
-        <button type="button" id="generateQuote">Generate Quote</button>
-        <p id="quoteDisplay"></p>
+        <h2>Delivery/Pickup</h2>
+        <label for="delivery">Delivery or Pickup <span style="color: #ff7043">*</span></label>
+        <select id="delivery" name="delivery" required>
+          <option value="" disabled selected>Choose an option</option>
+          <option value="pickup">Pickup</option>
+          <option value="delivery">Delivery</option>
+        </select>
+
+        <label for="date">Preferred Date <span style="color: #ff7043">*</span></label>
+        <input type="date" id="date" name="date" required />
       </div>
 
+      <!-- Contact Info -->
       <div class="form-section">
-        <h2>Contact Information</h2>
-        <p class="info-note">Please provide your contact details so we can confirm your order and arrange pickup.</p>
-        <label for="name">Your Name</label>
+        <h2>Contact Info</h2>
+        <label for="name">Name <span style="color: #ff7043">*</span></label>
         <input type="text" id="name" name="name" required />
-
-        <label for="phone">Phone Number</label>
+        <label for="phone">Phone <span style="color: #ff7043">*</span></label>
         <input type="tel" id="phone" name="phone" required />
-
-        <label for="email">Email Address</label>
+        <label for="email">Email <span style="color: #ff7043">*</span></label>
         <input type="email" id="email" name="email" required />
-
-        <label for="venmo">Venmo Username</label>
+        <label for="venmo">Venmo <span style="color: #ff7043">*</span></label>
         <input type="text" id="venmo" name="venmo" required />
       </div>
 
-      <button type="submit">Submit Order Request</button>
+      <button type="button" id="generateQuote">Get a Quote</button>
+      <p id="quoteDisplay"></p>
+      <button type="submit">Send It Off!</button>
     </form>
+    <button id="openSlotLink" style="margin-top: 20px;">Spin the Slots!</button>
   </div>
 
   <footer>
-    <p>Joannes Baskets © 2024 | Curated excellence in every basket.</p>
+    <p>Joanne's Baskets © 2024 | Gifts with a Groovy Twist!</p>
   </footer>
 
-  <!-- Slot Machine Modal (initially hidden) -->
+  <!-- Slot Machine Modal -->
   <div id="slotMachineModal">
     <div id="slotMachineHeader">
-      <span id="slotMachineTitle">Slot Machine</span>
-      <span id="slotMachineBalance">Balance: $1,000,000</span>
-      <div>
-        <button id="minimizeSlot">_</button>
-        <button id="closeSlot">X</button>
-      </div>
+      <span>Balance: <span id="slotMachineBalance">$1,000</span></span>
+      <button id="closeSlot">X</button>
     </div>
-    <div id="slotMachineContent">
-      <div id="reels">
-        <div class="reel" id="reel1">🧺</div>
-        <div class="reel" id="reel2">🍎</div>
-        <div class="reel" id="reel3">🍫</div>
-      </div>
-      <button id="spinButton">Spin</button>
+    <div id="reels">
+      <div class="reel" id="reel1">🧺</div>
+      <div class="reel" id="reel2">🍎</div>
+      <div class="reel" id="reel3">🍫</div>
     </div>
+    <button id="spinButton">Spin ($5)</button>
   </div>
-
-  <!-- Win Popup Modal -->
-  <div id="winPopup">
-    <h2></h2>
-    <button id="closeWinPopup">Close</button>
-  </div>
-
-  <!-- Open Slot Machine Button (fixed in bottom-right) -->
-  <button id="openSlotButton">🎰</button>
 
   <script>
-    /* --- Product Button Functionality --- */
-    const selectedProductsList = document.getElementById('selectedProducts');
+    /* Product Selection */
     const productButtons = document.querySelectorAll('.product-btn');
+    const previewText = document.getElementById('previewText');
     productButtons.forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', () => {
         btn.classList.toggle('selected');
-        btn.classList.add('pop');
-        btn.addEventListener('animationend', () => {
-          btn.classList.remove('pop');
-        }, {once: true});
-        updateSelectedList();
+        updatePreview();
       });
     });
-    function updateSelectedList() {
-      selectedProductsList.innerHTML = "";
-      productButtons.forEach(btn => {
-        if (btn.classList.contains('selected')) {
-          const li = document.createElement('li');
-          li.textContent = btn.getAttribute('data-product');
-          selectedProductsList.appendChild(li);
-        }
-      });
-    }
 
-    /* --- Quote Generator --- */
-    const productPrices = {
-      "Candles": 5,
-      "Fresh Fruit": 7,
-      "Mixed Nuts": 8,
-      "Gourmet Crackers": 6,
-      "Artisan Chips": 5,
-      "Premium Cheeses": 10,
-      "Wine": 15,
-      "Assorted Chocolates": 8,
-      "Gourmet Coffee": 9,
-      "Specialty Teas": 7,
-      "Fresh Flowers": 8,
-      "Gourmet Cookies": 7,
-      "Sweet Cupcakes": 9,
-      "Organic Honey": 6,
-      "Artisan Bread": 5
-    };
-    document.getElementById('generateQuote').addEventListener('click', function() {
-      let total = 0;
-      productButtons.forEach(btn => {
-        if (btn.classList.contains('selected')) {
-          const product = btn.getAttribute('data-product');
-          total += productPrices[product] || 0;
-        }
-      });
-      const tier = document.getElementById('tier').value;
-      const multiplier = tier === "standard" ? 1 : tier === "deluxe" ? 1.5 : 2;
-      const finalQuote = total * multiplier;
-      document.getElementById('quoteDisplay').innerText = "Estimated Quote: $" + finalQuote.toFixed(2);
-    });
-
-    /* --- Form Submission via Email --- */
-    document.getElementById('basketForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
-      const venmo = document.getElementById('venmo').value;
+    function updatePreview() {
+      const selected = Array.from(productButtons)
+        .filter(btn => btn.classList.contains('selected'))
+        .map(btn => btn.getAttribute('data-product'));
       const theme = document.getElementById('theme').value;
-      const tierText = document.getElementById('tier').options[document.getElementById('tier').selectedIndex].text;
-      let selectedProducts = [];
-      productButtons.forEach(btn => {
-        if (btn.classList.contains('selected')) {
-          selectedProducts.push(btn.getAttribute('data-product'));
-        }
-      });
-      const productsStr = selectedProducts.join(', ') || 'None selected';
-      const message = document.getElementById('message').value || 'No special message.';
-      const quoteText = document.getElementById('quoteDisplay').innerText || "Quote not generated.";
-      const subject = encodeURIComponent('New Basket Request');
-      const body = encodeURIComponent(
-        `=== Customer Details ===\n` +
-        `Name: ${name}\n` +
-        `Phone: ${phone}\n` +
-        `Email: ${email}\n` +
-        `Venmo Username: ${venmo}\n\n` +
-        `=== Basket Details ===\n` +
-        `Theme: ${theme}\n` +
-        `Tier: ${tierText}\n` +
-        `Products: ${productsStr}\n` +
-        `Special Message: ${message}\n` +
-        `${quoteText}`
-      );
-      window.location.href = `mailto:jbtr9@comcast.net?subject=${subject}&body=${body}`;
+      previewText.textContent = selected.length
+        ? `A ${theme} basket with: ${selected.join(', ')}`
+        : 'Start adding some goodies!';
+    }
+
+    /* Smart Quote Generator */
+    const tierBaseCosts = { standard: 10, deluxe: 20, premium: 30 }; // Hidden base costs
+    const productPrices = { Candles: 5, Fruit: 7, Nuts: 8, Chocolates: 8, Wine: 15, Flowers: 8 };
+    document.getElementById('generateQuote').addEventListener('click', () => {
+      const selected = Array.from(productButtons)
+        .filter(btn => btn.classList.contains('selected'))
+        .map(btn => btn.getAttribute('data-product'));
+      const tier = document.getElementById('tier').value;
+      const delivery = document.getElementById('delivery').value === 'delivery' ? 10 : 0;
+      const baseCost = tierBaseCosts[tier] || 0;
+      const productCost = selected.reduce((sum, p) => sum + (productPrices[p] || 0), 0);
+      const total = baseCost + productCost + delivery;
+      document.getElementById('quoteDisplay').textContent = `Estimated Total: $${total.toFixed(2)}`;
     });
 
-    /* --- Slot Machine Functionality --- */
-    const slotEmojis = ["🧺", "🕯️", "🍎", "🥜", "🧀", "🍫", "🍷", "☕", "🍵", "💰", "🎰"];
-    const reel1 = document.getElementById('reel1');
-    const reel2 = document.getElementById('reel2');
-    const reel3 = document.getElementById('reel3');
-    const spinButton = document.getElementById('spinButton');
-    const balanceDisplay = document.getElementById('slotMachineBalance');
-    let balance = 1000000; // resets on refresh
-    const spinCost = 50; // cost per spin
-
-    function updateBalanceDisplay() {
-      balanceDisplay.textContent = "Balance: $" + balance.toLocaleString();
-    }
-    updateBalanceDisplay();
-
-    spinButton.addEventListener('click', function() {
-      if (balance < spinCost) {
-        alert("Insufficient funds for a spin!");
+    /* Form Submission */
+    document.getElementById('basketForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) {
+        form.reportValidity(); // Show validation errors if any
         return;
       }
-      // Deduct spin cost and update display
-      balance -= spinCost;
-      updateBalanceDisplay();
-      spinButton.disabled = true;
-      const spinTime = 1500; // spin for 1.5 seconds for realism
-      const interval = setInterval(() => {
-        reel1.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-        reel2.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-        reel3.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-      }, 75);
-      setTimeout(() => {
-        clearInterval(interval);
-        // Determine final values
-        const final1 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-        const final2 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-        const final3 = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-        reel1.textContent = final1;
-        reel2.textContent = final2;
-        reel3.textContent = final3;
-        spinButton.disabled = false;
-        // Determine win conditions: if at least two reels match, win bonus.
-        let bonus = 0;
-        if (final1 === final2 && final2 === final3) {
-          bonus = 1000; // jackpot for triple match
-        } else if (final1 === final2 || final2 === final3 || final1 === final3) {
-          bonus = 200; // win for double match
-        }
-        if (bonus > 0) {
-          // Add bonus to account balance and show win popup
-          balance += bonus;
-          updateBalanceDisplay();
-          showWinPopup(`Congratulations! You won $${bonus.toLocaleString()}!`);
-        }
-      }, spinTime);
+      const formData = new FormData(form);
+      const selected = Array.from(productButtons)
+        .filter(btn => btn.classList.contains('selected'))
+        .map(btn => btn.getAttribute('data-product'))
+        .join(', ');
+      const body = encodeURIComponent(
+        `=== Customer Details ===\n` +
+        `Name: ${formData.get('name')}\n` +
+        `Phone: ${formData.get('phone')}\n` +
+        `Email: ${formData.get('email')}\n` +
+        `Venmo: ${formData.get('venmo')}\n\n` +
+        `=== Basket Details ===\n` +
+        `Theme: ${formData.get('theme')}\n` +
+        `Size: ${document.getElementById('tier').options[document.getElementById('tier').selectedIndex].text}\n` +
+        `Products: ${selected || 'None'}\n` +
+        `Message: ${formData.get('message') || 'None'}\n\n` +
+        `=== Delivery/Pickup ===\n` +
+        `Option: ${formData.get('delivery')}\n` +
+        `Date: ${formData.get('date')}\n\n` +
+        `${document.getElementById('quoteDisplay').textContent || 'Quote not generated'}`
+      );
+      window.location.href = `mailto:jbtr9@comcast.net?subject=New%20Basket%20Order&body=${body}`;
     });
 
-    /* --- Slot Machine Modal Controls --- */
-    const slotMachineModal = document.getElementById('slotMachineModal');
-    const minimizeSlot = document.getElementById('minimizeSlot');
-    const closeSlot = document.getElementById('closeSlot');
-    minimizeSlot.addEventListener('click', function(e) {
-      e.stopPropagation();
-      slotMachineModal.classList.toggle('minimized');
-    });
-    closeSlot.addEventListener('click', function(e) {
-      e.stopPropagation();
-      slotMachineModal.style.display = 'none';
-    });
-    // Clicking the modal restores it if minimized
-    slotMachineModal.addEventListener('click', function() {
-      if (slotMachineModal.classList.contains('minimized')) {
-        slotMachineModal.classList.remove('minimized');
-      }
-    });
+    /* Slot Machine */
+    const slotModal = document.getElementById('slotMachineModal');
+    const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
+    const spinButton = document.getElementById('spinButton');
+    const balanceDisplay = document.getElementById('slotMachineBalance');
+    let balance = 1000;
+    const slotIcons = ['🧺', '🍎', '🍫', '💰', '🎁'];
 
-    /* --- Win Popup Functionality --- */
-    const winPopup = document.getElementById('winPopup');
-    const closeWinPopup = document.getElementById('closeWinPopup');
-    function showWinPopup(message) {
-      winPopup.querySelector("h2").textContent = message;
-      winPopup.style.display = 'block';
+    function updateBalance() {
+      balanceDisplay.textContent = `$${balance}`;
     }
-    closeWinPopup.addEventListener('click', function() {
-      winPopup.style.display = 'none';
+
+    spinButton.addEventListener('click', () => {
+      if (balance < 5) return alert('Not enough funds!');
+      balance -= 5;
+      updateBalance();
+      spinButton.disabled = true;
+      reels.forEach(reel => reel.classList.add('spinning'));
+      let spins = 20;
+      const interval = setInterval(() => {
+        reels.forEach(reel => reel.textContent = slotIcons[Math.floor(Math.random() * slotIcons.length)]);
+        if (--spins <= 0) {
+          clearInterval(interval);
+          spinButton.disabled = false;
+          reels.forEach(reel => reel.classList.remove('spinning'));
+          const results = reels.map(reel => reel.textContent);
+          if (results[0] === results[1] && results[1] === results[2]) {
+            balance += 50;
+            alert('Jackpot! +$50');
+          } else if (results[0] === results[1] || results[1] === results[2] || results[0] === results[2]) {
+            balance += 10;
+            alert('Win! +$10');
+          }
+          updateBalance();
+        }
+      }, 100);
     });
 
-    /* --- Open Slot Machine Button Functionality --- */
-    const openSlotButton = document.getElementById('openSlotButton');
-    openSlotButton.addEventListener('click', function() {
-      // Toggle display of the slot machine modal
-      if (slotMachineModal.style.display === 'none' || slotMachineModal.style.display === '') {
-        slotMachineModal.style.display = 'block';
-      } else {
-        slotMachineModal.style.display = 'none';
-      }
+    document.getElementById('openSlotLink').addEventListener('click', () => {
+      slotModal.style.display = 'block';
+    });
+    document.getElementById('closeSlot').addEventListener('click', () => {
+      slotModal.style.display = 'none';
     });
   </script>
 </body>
 </html>
-`
